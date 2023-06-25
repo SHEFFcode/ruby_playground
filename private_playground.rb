@@ -14,6 +14,6 @@ end
 
 person = Person.new
 
-person.say_something
+person.say_something 
 
 person.use_me() # will not work, because use_me is defined as a private var on Object, and usages with explicit caller should be decliend. "private method `use_me'"
