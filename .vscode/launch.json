@@ -8,7 +8,7 @@
       "name": "Debug Local File",
       "type": "Ruby",
       "request": "launch",
-      "program": "${workspaceRoot}/private_playground.rb"
+      "program": "${workspaceRoot}/error_handling.rb"
     }
   ]
 }
