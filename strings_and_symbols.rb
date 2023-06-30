@@ -64,6 +64,48 @@ s3 = ''
 s3 << s1 + s2 # here we shovel in, paranthesis are not required
 p s3
 
+p s.include?('Ruby')
+p s.include?('ruby') # false
+p s.start_with?('Ruby')
+p s.start_with?('ruby') # false
+p s.empty? # false
+p s.size
+p s.count('a')
+p s.count('g-m') # you can provide a letter range
+p s.count('A-Z') # this range is for capital letters only
+p s.count('aey. ') # the occurance of 'a', 'e', 'y', '.' or ' '. (Sum of those occurances)
+
+p 'a'.ord() # gives back the ordinal code (97)
+p 97.chr # 'a'
+
+p 'a' == 97 # false
+p 'a' == 97.chr # true
+
+# String comparisons
+p 'b' > 'a' # true
+p 'a' > 'A' # true
+
+p 'a'.ord, 'A'.ord # 97, 65
+
+# The == method tests for equality of the content of the two strings in question
+
+p 'a' == 'a' # true, note here that 'a'.eql? is basically the same as ==
+p 'a'.equal? 'a' # false because they are not the same object
 
 
+# String transformations
+s = 'David A. Black'
+p s.upcase # "DAVID A. BLACK"
+p s.downcase # "david a. black"
+p s.swapcase # "dAVID a. bLACK"
+p s.capitalize # David a. black, so only the first letter will be capitalized
 
+p 'The Middle'.center(20, '*') # "*****The Middle*****"
+
+p '      the center        '.strip # "the center"
+p "Some line \n".chomp # removes the new line by default, if given an argument will try to remove it if its there
+
+p s = '(to be named later)' # dont want it to be named anything yet
+p s.replace('Hello world')
+
+p __ENCODING__ # how to see what encoding you are using, by default UTF-8
