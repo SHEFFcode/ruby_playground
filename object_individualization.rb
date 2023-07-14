@@ -90,4 +90,4 @@ talker.talk # "Hello from the super talker!!"
 p talker.class.ancestors # will not show the module mixed in! [Talker, Object, Kernel, BasicObject]
 p talker.singleton_class.ancestors # [#<Class:#<Talker:0x00007fafef892208>>, SuperTalker, Talker, Object, Kernel, BasicObject]
 
-
+# Singleton classes are also sometimes called meta classes in ruby
