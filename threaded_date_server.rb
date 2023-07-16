@@ -16,7 +16,7 @@
 require 'socket'
 s = TCPServer.new(3939)
 while (conn = s.accept)
-  Thread.new(conn) do |connection_in_thread|
+  Thread.new(conn) do |connection_in_thread| # Each time you get a new connection 
     connection_in_thread.print "Hi. What is your name?"
     sleep(5) # simulate a long running request here, see that the second client gets nothing back!
     name = connection_in_thread.gets.chomp
