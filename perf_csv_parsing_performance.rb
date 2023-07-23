@@ -9,3 +9,4 @@ measure do
   File.open('output.csv', 'w+') {|f| f.write(output.join('\n'))}
 end
 
+# {"gc":"enabled","time":1.49,"gc_count":42,"memory":"119 MB"}
