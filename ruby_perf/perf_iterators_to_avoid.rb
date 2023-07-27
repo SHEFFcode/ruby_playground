@@ -1,35 +1,43 @@
+require_relative 'perf_benchmark_tool'
 GC.disable
 
-before = ObjectSpace.count_objects
 
-Array.new(10_000).each do |i|
-  [0, 1].each do |j|
-    # do something
+measure {
+  before = ObjectSpace.count_objects
+  Array.new(100_000).each do |i|
+    [0, 1].each do |j|
+      # do something
+    end
   end
-end
-
-after = ObjectSpace.count_objects
-
-p "# of arrays #{after[:T_ARRAY] - before[:T_ARRAY]}"
-# "# of arrays 10001"
-p "# of nodes #{after[:T_NODE] - before[:T_NODE]}"
-# # of nodes 0
+  after = ObjectSpace.count_objects
+  p "# of arrays #{after[:T_ARRAY] - before[:T_ARRAY]}"
+}
 
 
-before = ObjectSpace.count_objects
+# "# of arrays 100001"
+# {"gc":"enabled","time":0.01,"gc_count":1,"memory":"5 MB"}
 
-Array.new(10_000).each do |i|
-  [0, 1].each_with_index do |j|
-    # do something
+
+
+measure {
+  before = ObjectSpace.count_objects
+  Array.new(100_000).each do |i|
+    [0, 1].each_with_index do |j|
+      # do something
+    end
   end
-end
+  after = ObjectSpace.count_objects
+  p "# of arrays #{after[:T_ARRAY] - before[:T_ARRAY]}"
+}
 
-after = ObjectSpace.count_objects
 
-p "# of arrays #{after[:T_ARRAY] - before[:T_ARRAY]}"
-# "# of arrays 10001"
-p "# of nodes #{after[:T_NODE] - before[:T_NODE]}"
-# # of nodes 20000
+# "# of arrays 100001"
+# {"gc":"enabled","time":0.03,"gc_count":1,"memory":"13 MB"}
+
+
+
+
+
 
 # So the number of nodes has increased significantly
 # We get an additional *memo node in memory, which doubles the number of nodes that get created for each call
