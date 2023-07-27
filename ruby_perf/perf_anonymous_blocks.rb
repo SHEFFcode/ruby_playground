@@ -11,7 +11,7 @@ def do_something
 end
 
 def take_block(&block)
-  block.call('args')
+  block.call('args') # Here the code will rewrite this as  Proc.new.call, which allocates more memory and is slower
 end
 
 measure {
@@ -21,7 +21,7 @@ measure {
 # {"gc":"enabled","time":0.01,"gc_count":2,"memory":"22 MB"}
 
 def take_anon_block
-  yield('args')
+  yield('args') # here no extra memory is allocated
 end
 
 measure {
